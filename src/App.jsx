@@ -3,6 +3,7 @@ import Hero from './components/Hero'
 import About from './components/About'
 import Services from './components/Services'
 import Differentials from './components/Differentials'
+import FAQ from './components/FAQ'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <About />
         <Services />
         <Differentials />
+        <FAQ />
       </main>
     </div>
   )
