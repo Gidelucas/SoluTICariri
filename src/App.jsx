@@ -1,16 +1,25 @@
 function App() {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-slate-950">
-      <div className="text-center">
-        <h1 className="text-5xl font-bold text-blue-500">
-          SoluTI Cariri
-        </h1>
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <main>
+        <section className="flex min-h-screen items-center justify-center px-6">
+          <div className="text-center">
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-blue-400">
+              SoluTI Cariri
+            </p>
 
-        <p className="mt-4 text-lg text-slate-300">
-          Tecnologia que transforma negócios.
-        </p>
-      </div>
-    </main>
+            <h1 className="mt-4 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+              Tecnologia para transformar negócios.
+            </h1>
+
+            <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-slate-400 sm:text-lg">
+              Desenvolvimento, automação, infraestrutura e soluções de
+              tecnologia pensadas para sua empresa.
+            </p>
+          </div>
+        </section>
+      </main>
+    </div>
   )
 }
 
