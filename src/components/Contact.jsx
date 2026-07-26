@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { company } from '../data/company'
 import {
   Clock3,
   Mail,
@@ -14,7 +15,7 @@ function Contact() {
     message: '',
   })
 
-  const whatsappNumber = '5588981041441'
+const whatsappNumber = company.whatsapp
 
   function handleChange(event) {
     const { name, value } = event.target

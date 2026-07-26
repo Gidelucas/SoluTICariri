@@ -5,6 +5,9 @@ import Services from './components/Services'
 import Differentials from './components/Differentials'
 import FAQ from './components/FAQ'
 import Contact from './components/Contact'
+import Footer from './components/Footer'
+import WhatsappButton from './components/WhatsappButton'
+import BackToTop from './components/BackToTop'
 
 function App() {
   return (
@@ -19,6 +22,11 @@ function App() {
         <FAQ />
         <Contact />
       </main>
+
+      <Footer />
+
+      <BackToTop />
+      <WhatsappButton />
     </div>
   )
 }
