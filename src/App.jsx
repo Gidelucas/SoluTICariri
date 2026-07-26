@@ -1,8 +1,15 @@
+import Navbar from './components/Navbar'
+
 function App() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
+      <Navbar />
+
       <main>
-        <section className="flex min-h-screen items-center justify-center px-6">
+        <section
+          id="inicio"
+          className="flex min-h-screen items-center justify-center px-6 pt-20"
+        >
           <div className="text-center">
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-blue-400">
               SoluTI Cariri
