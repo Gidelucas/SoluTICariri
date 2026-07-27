@@ -1,19 +1,19 @@
 function About() {
   const highlights = [
     {
-      title: 'Soluções sob medida',
+      title: 'Foco operacional',
       description:
-        'Cada projeto é pensado de acordo com a realidade, os processos e os objetivos de cada empresa.',
+        'Cada intervenção é pensada para minimizar o tempo de inatividade e o impacto na operação da empresa.',
     },
     {
       title: 'Visão de negócio',
       description:
-        'Tecnologia não deve existir apenas pela tecnologia. Buscamos gerar eficiência, segurança e resultado.',
+        'Tecnologia não deve existir apenas pela tecnologia. Buscamos gerar eficiência, segurança e continuidade para o resultado do cliente.',
     },
     {
       title: 'Atendimento próximo',
       description:
-        'Valorizamos comunicação clara, acompanhamento e relacionamento de longo prazo com nossos clientes.',
+        'Comunicação direta, resposta ágil e acompanhamento de longo prazo com quem atende sua empresa.',
     },
   ]
 
@@ -35,16 +35,15 @@ function About() {
             </h2>
 
             <p className="mt-6 text-base leading-7 text-slate-400 sm:text-lg">
-              A SoluTI Cariri atua na criação e implementação de soluções
-              tecnológicas para empresas que desejam melhorar seus processos,
-              reduzir tarefas manuais e utilizar a tecnologia de forma mais
-              eficiente.
+              A SoluTI Cariri atua no suporte técnico e na manutenção de sistemas de venda, redes
+              e infraestrutura de TI para empresas do comércio e indústria. Nosso foco está em manter 
+              a operação funcionando, prevenindo interrupções que impactam diretamente a receita.
             </p>
 
             <p className="mt-4 text-base leading-7 text-slate-400">
-              Nosso foco é entender a necessidade antes de propor a solução,
-              combinando desenvolvimento, automação, infraestrutura, suporte e
-              consultoria de acordo com cada cenário.
+              Não basta ter tecnologia. Ela precisa trabalhar a favor da sua empresa. Conectamos 
+              infraestrutura, sistemas e processos para criar um ambiente estável, otimizado e 
+              preparado para o crescimento do seu negócio.
             </p>
           </div>
 

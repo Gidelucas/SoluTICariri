@@ -12,37 +12,37 @@ function Differentials() {
     {
       title: 'Atendimento próximo',
       description:
-        'Comunicação direta e acompanhamento durante todo o desenvolvimento da solução.',
+        'Comunicação direta e resposta rápida sempre que sua operação precisar.',
       icon: Handshake,
     },
     {
       title: 'Soluções personalizadas',
       description:
-        'A tecnologia é adaptada aos processos e às necessidades reais de cada empresa.',
+        'O suporte é adaptado à realidade e às necessidades específicas de cada empresa.',
       icon: Wrench,
     },
     {
       title: 'Foco em resultado',
       description:
-        'As decisões técnicas são orientadas por eficiência, produtividade e geração de valor.',
+        'As decisões técnicas são orientadas para reduzir tempo de inatividade e gerar continuidade operacional.',
       icon: Target,
     },
     {
       title: 'Segurança',
       description:
-        'Boas práticas são consideradas desde a infraestrutura até o desenvolvimento das soluções.',
+        'Boas práticas aplicadas desde a infraestrutura até o backup dos dados da empresa.',
       icon: LockKeyhole,
     },
     {
       title: 'Agilidade',
       description:
-        'Buscamos soluções objetivas e processos eficientes para reduzir tempo e complexidade.',
+        'Diagnóstico rápido e soluções objetivas para reduzir tempo de parada.',
       icon: Gauge,
     },
     {
       title: 'Compromisso',
       description:
-        'Transparência, responsabilidade e qualidade em cada etapa do atendimento.',
+        'Transparência, responsabilidade e qualidade em cada atendimento.',
       icon: BadgeCheck,
     },
   ]
@@ -63,16 +63,12 @@ function Differentials() {
           </h2>
 
           <p className="mt-6 max-w-xl text-base leading-7 text-slate-400 sm:text-lg">
-            Mais do que entregar ferramentas, buscamos compreender o cenário de
-            cada cliente e construir soluções que façam sentido para sua
-            operação.
+            Mais do que resolver o problema técnico, buscamos entender o impacto no seu negócio e agir para manter sua operação funcionando.
           </p>
 
           <div className="mt-8 rounded-2xl border border-blue-400/20 bg-blue-500/10 p-6">
             <p className="text-sm leading-6 text-blue-100">
-              Nosso objetivo é transformar tecnologia em uma ferramenta prática
-              para melhorar processos, reduzir problemas e apoiar o crescimento
-              da empresa.
+              Nosso objetivo é transformar tecnologia em uma ferramenta prática para manter sua empresa vendendo, reduzir falhas e apoiar o crescimento do negócio.
             </p>
           </div>
         </div>

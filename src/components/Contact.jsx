@@ -101,7 +101,7 @@ ${formData.message}
 
                 <div>
                   <p className="font-medium text-white">
-                    Horário de atendimento
+                    Atendimento
                   </p>
 
                   <p className="mt-1 text-sm text-slate-400">

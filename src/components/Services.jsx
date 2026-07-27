@@ -13,13 +13,11 @@ function Services() {
           </p>
 
           <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            Tecnologia aplicada às necessidades da sua empresa.
+            Tecnologia aplicada à continuidade do seu negócio.
           </h2>
 
           <p className="mt-6 max-w-2xl text-base leading-7 text-slate-400 sm:text-lg">
-            Da infraestrutura ao desenvolvimento de soluções personalizadas,
-            ajudamos empresas a utilizar a tecnologia de forma mais eficiente,
-            segura e estratégica.
+            Suporte técnico especializado em sistemas de venda, redes e infraestrutura para empresas do comércio e indústria.
           </p>
         </div>
 

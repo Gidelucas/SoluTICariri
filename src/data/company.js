@@ -6,7 +6,7 @@ export const company = {
   instagram: 'https://www.instagram.com/soluticariri',
   instagramLabel: '@soluticariri',
   location: 'CRAJUBAR com sede em Juazeiro do Norte - Ceará',
-  businessHours: 'Segunda a Sábado, em horário comercial',
+  businessHours: 'Respondemos o mais rápido possível.',
   description:
     'Da Tecnologia ao resultado que move sua empresa.',
 }

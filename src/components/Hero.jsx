@@ -15,13 +15,13 @@ function Hero() {
           </p>
 
           <h1 className="mt-5 max-w-3xl text-4xl font-bold tracking-[-0.03em] text-white sm:text-5xl lg:text-6xl xl:text-7xl">
-            Tecnologia que impulsiona o crescimento do seu negócio.
+            Sua operação não pode parar
           </h1>
 
           <p className="mt-6 max-w-2xl text-base leading-7 text-slate-400 sm:text-lg">
-            Desenvolvimento de software, automações, infraestrutura, suporte e
-            consultoria em tecnologia para empresas que querem evoluir com
-            segurança e eficiência.
+            Suporte especializado em sistemas de venda (PDV/ERP), redes de computadores e infraestrutura de TI para empresas do comércio e indústria. 
+            Cada período de inatividade representa perda direta de receita, atuamos para 
+            minimizar esse impacto.
           </p>
 
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">
@@ -41,9 +41,9 @@ function Hero() {
           </div>
 
           <div className="mt-10 flex flex-col gap-3 text-sm text-slate-400 sm:flex-row sm:gap-6">
-            <span>✓ Soluções personalizadas</span>
-            <span>✓ Atendimento próximo</span>
-            <span>✓ Tecnologia aplicada ao negócio</span>
+            <span>✓ Atendimento rápido na região</span>
+            <span>✓ Diagnóstico técnico objetivo</span>
+            <span>✓ Foco em não deixar você parar de vender</span>
           </div>
         </div>
 
@@ -54,11 +54,11 @@ function Hero() {
             <div className="flex items-center justify-between border-b border-white/10 pb-5">
               <div>
                 <p className="text-xs uppercase tracking-[0.25em] text-blue-400">
-                  Soluções digitais
+                  O que resolvemos
                 </p>
 
                 <p className="mt-2 text-lg font-semibold text-white">
-                  Tecnologia sob medida
+                  Sua empresa sempre operando.
                 </p>
               </div>
 
@@ -71,30 +71,41 @@ function Hero() {
 
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
               {[
-                'Desenvolvimento',
-                'Automações',
-                'Infraestrutura',
-                'Consultoria',
+                {
+                  title: 'Suporte a PDV/ERP',
+                  description: 'Diagnóstico e correção de falhas em sistemas de PDV e ERP, garantindo a continuidade das operações.',
+                },
+                {
+                  title: 'Redes e infraestrutura',
+                  description: 'Internet caindo, rede desorganizada ou máquinas sem conexão.',
+                },
+                {
+                  title: 'Manutenção e backup',
+                  description: 'Prevenção de falhas e perda de dados importantes.',
+                },
+                {
+                  title: 'Automação de processos',
+                  description: 'Relatórios e processos manuais que consomem tempo da equipe.',
+                },
               ].map((item) => (
                 <div
-                  key={item}
-                  className="rounded-2xl border border-white/10 bg-slate-950/50 p-5"
+                  key={item.title}
+                  className="rounded-xl border border-white/10 bg-white/5 p-4"
                 >
-                  <div className="mb-4 h-10 w-10 rounded-xl bg-blue-500/10 ring-1 ring-blue-400/20" />
+                  <p className="font-semibold text-white">
+                    {item.title}
+                  </p>
 
-                  <p className="font-medium text-white">{item}</p>
-
-                  <div className="mt-4 h-1.5 w-full rounded-full bg-slate-800">
-                    <div className="h-full w-2/3 rounded-full bg-blue-500" />
-                  </div>
+                  <p className="mt-1 text-sm leading-6 text-slate-400">
+                    {item.description}
+                  </p>
                 </div>
               ))}
             </div>
 
             <div className="mt-4 rounded-2xl border border-blue-400/20 bg-blue-500/10 p-5">
               <p className="text-sm font-medium text-blue-200">
-                Tecnologia pensada para gerar eficiência, segurança e
-                crescimento.
+                Da Tecnologia ao resultado que move sua empresa.
               </p>
             </div>
           </div>
