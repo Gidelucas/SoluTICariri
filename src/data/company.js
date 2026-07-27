@@ -5,7 +5,7 @@ export const company = {
   email: 'soluticariri@gmail.com',
   instagram: 'https://www.instagram.com/soluticariri',
   instagramLabel: '@soluticariri',
-  location: 'Juazeiro do Norte - Ceará',
+  location: 'CRAJUBAR com sede em Juazeiro do Norte - Ceará',
   businessHours: 'Segunda a Sábado, em horário comercial',
   description:
     'Da Tecnologia ao resultado que move sua empresa.',
