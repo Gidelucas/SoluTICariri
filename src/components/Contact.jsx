@@ -31,11 +31,9 @@ function Contact() {
 
     const message = `
 Olá! Vim pelo site da ${company.name}.
+Me chamo ${formData.name},
+da empresa ${formData.company || 'Não informado'}
 
-Nome: ${formData.name}
-Empresa: ${formData.company || 'Não informado'}
-
-Mensagem:
 ${formData.message}
     `.trim()
 
@@ -68,7 +66,9 @@ ${formData.message}
             </p>
 
             <a
-              href={`https://wa.me/${company.whatsapp}`}
+              href={`https://wa.me/${company.whatsapp}?text=${encodeURIComponent(
+                'Olá! Vim pelo site da SoluTI Cariri e gostaria de conversar sobre uma solução para minha empresa.'
+              )}`}
               target="_blank"
               rel="noreferrer"
               className="mt-8 inline-flex items-center gap-3 rounded-xl bg-blue-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-blue-950/30 transition duration-300 hover:-translate-y-0.5 hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
@@ -90,22 +90,6 @@ ${formData.message}
 
                   <p className="mt-1 text-sm text-slate-400">
                     {company.location}
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-500/10 text-blue-400 ring-1 ring-blue-400/20">
-                  <Clock3 size={19} />
-                </div>
-
-                <div>
-                  <p className="font-medium text-white">
-                    Atendimento
-                  </p>
-
-                  <p className="mt-1 text-sm text-slate-400">
-                    {company.businessHours}
                   </p>
                 </div>
               </div>

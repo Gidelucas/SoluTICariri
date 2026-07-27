@@ -13,7 +13,7 @@ function Services() {
           </p>
 
           <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            Tecnologia aplicada à continuidade do seu negócio.
+            O que fazemos pela sua operação.
           </h2>
 
           <p className="mt-6 max-w-2xl text-base leading-7 text-slate-400 sm:text-lg">

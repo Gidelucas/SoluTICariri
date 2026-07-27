@@ -2,7 +2,7 @@ export const faqItems = [
   {
     question: 'Quais tipos de empresas a SoluTI Cariri atende?',
     answer:
-      'Atendemos empresas do comércio que dependem de sistemas de venda, redes e infraestrutura de TI para operar sem interrupções — como mercados, farmácias, lojas e demais estabelecimentos.',
+      'Atendemos empresas do comércio que dependem de sistemas de venda, redes e infraestrutura de TI para operar sem interrupções, como mercados, farmácias, lojas e demais estabelecimentos.',
   },
   {
     question: 'Quais problemas vocês resolvem com mais frequência?',

@@ -59,7 +59,7 @@ function Differentials() {
           </p>
 
           <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            Tecnologia com proximidade, estratégia e responsabilidade.
+            O que nos diferencia no atendimento.
           </h2>
 
           <p className="mt-6 max-w-xl text-base leading-7 text-slate-400 sm:text-lg">

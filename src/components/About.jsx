@@ -30,8 +30,7 @@ function About() {
             </p>
 
             <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Tecnologia próxima, estratégica e feita para resolver problemas
-              reais.
+              Suporte técnico para manter sua empresa sempre em funcionamento.
             </h2>
 
             <p className="mt-6 text-base leading-7 text-slate-400 sm:text-lg">

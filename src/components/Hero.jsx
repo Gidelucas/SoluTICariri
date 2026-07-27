@@ -20,8 +20,8 @@ function Hero() {
 
           <p className="mt-6 max-w-2xl text-base leading-7 text-slate-400 sm:text-lg">
             Suporte especializado em sistemas de venda (PDV/ERP), redes de computadores e infraestrutura de TI para empresas do comércio e indústria. 
-            Cada período de inatividade representa perda direta de receita, atuamos para 
-            minimizar esse impacto.
+            Menos tempo lidando com problemas de TI, mais tempo para fazer seu negócio crescer. Cuidamos da sua infraestrutura para reduzir paradas e 
+            manter tudo funcionando como deve.
           </p>
 
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">
