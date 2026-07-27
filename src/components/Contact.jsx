@@ -1,13 +1,11 @@
 import { useState } from 'react'
 import {
-  Clock3,
-  Camera,
   Mail,
   MapPin,
   MessageCircle,
   Send,
 } from 'lucide-react'
-
+const instagramIcon = `${import.meta.env.BASE_URL}instagram.svg`
 import { company } from '../data/company'
 
 function Contact() {
@@ -96,7 +94,13 @@ ${formData.message}
 
               <div className="flex items-start gap-4">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-500/10 text-blue-400 ring-1 ring-blue-400/20">
-                  <Camera size={19} />
+                  <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    className="h-5 w-5 fill-current text-blue-500"
+                  >
+                    <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2zm-.2 2C5.6 4 4 5.6 4 7.6v8.8C4 18.4 5.6 20 7.6 20h8.8c2 0 3.6-1.6 3.6-3.6V7.6C20 5.6 18.4 4 16.4 4H7.6zm9.65 1.5a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 2a3 3 0 100 6 3 3 0 000-6z" />
+                  </svg>
                 </div>
 
                 <div>
