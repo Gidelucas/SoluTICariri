@@ -14,7 +14,7 @@ function Hero() {
             SoluTI Cariri
           </p>
 
-          <h1 className="mt-5 max-w-3xl text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+          <h1 className="mt-5 max-w-3xl text-4xl font-bold tracking-[-0.03em] text-white sm:text-5xl lg:text-6xl xl:text-7xl">
             Tecnologia que impulsiona o crescimento do seu negócio.
           </h1>
 
@@ -27,14 +27,14 @@ function Hero() {
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">
             <a
               href="#contato"
-              className="rounded-xl bg-blue-600 px-6 py-3.5 text-center text-sm font-semibold text-white transition hover:bg-blue-500"
+              className="rounded-xl bg-blue-600 px-6 py-3.5 text-center text-sm font-semibold text-white shadow-lg shadow-blue-950/30 transition duration-300 hover:-translate-y-0.5 hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
             >
               Solicitar orçamento
             </a>
 
             <a
               href="#servicos"
-              className="rounded-xl border border-white/10 bg-white/5 px-6 py-3.5 text-center text-sm font-semibold text-slate-200 backdrop-blur transition hover:bg-white/10"
+              className="rounded-xl border border-white/10 bg-white/5 px-6 py-3.5 text-center text-sm font-semibold text-slate-200 backdrop-blur transition duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-blue-400"
             >
               Conhecer serviços
             </a>

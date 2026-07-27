@@ -18,11 +18,19 @@ body {
     BlinkMacSystemFont,
     "Segoe UI",
     sans-serif;
+  overflow-x: hidden;
 }
 
 button,
 a {
   -webkit-tap-highlight-color: transparent;
+}
+
+a,
+button,
+input,
+textarea {
+  outline-offset: 3px;
 }
 
 ::selection {

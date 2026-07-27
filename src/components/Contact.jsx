@@ -1,12 +1,14 @@
 import { useState } from 'react'
-import { company } from '../data/company'
 import {
   Clock3,
+  Camera,
   Mail,
   MapPin,
   MessageCircle,
   Send,
 } from 'lucide-react'
+
+import { company } from '../data/company'
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -14,8 +16,6 @@ function Contact() {
     company: '',
     message: '',
   })
-
-const whatsappNumber = company.whatsapp
 
   function handleChange(event) {
     const { name, value } = event.target
@@ -30,7 +30,7 @@ const whatsappNumber = company.whatsapp
     event.preventDefault()
 
     const message = `
-Olá! Vim pelo site da SoluTI Cariri.
+Olá! Vim pelo site da ${company.name}.
 
 Nome: ${formData.name}
 Empresa: ${formData.company || 'Não informado'}
@@ -39,7 +39,9 @@ Mensagem:
 ${formData.message}
     `.trim()
 
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`
+    const whatsappUrl = `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(
+      message,
+    )}`
 
     window.open(whatsappUrl, '_blank', 'noopener,noreferrer')
   }
@@ -66,10 +68,10 @@ ${formData.message}
             </p>
 
             <a
-              href={`https://wa.me/${whatsappNumber}`}
+              href={`https://wa.me/${company.whatsapp}`}
               target="_blank"
               rel="noreferrer"
-              className="mt-8 inline-flex items-center gap-3 rounded-xl bg-blue-600 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-blue-500"
+              className="mt-8 inline-flex items-center gap-3 rounded-xl bg-blue-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-blue-950/30 transition duration-300 hover:-translate-y-0.5 hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
             >
               <MessageCircle size={20} />
               Falar pelo WhatsApp
@@ -87,7 +89,7 @@ ${formData.message}
                   </p>
 
                   <p className="mt-1 text-sm text-slate-400">
-                    Cariri e atendimento remoto para outras regiões.
+                    {company.location}
                   </p>
                 </div>
               </div>
@@ -103,8 +105,29 @@ ${formData.message}
                   </p>
 
                   <p className="mt-1 text-sm text-slate-400">
-                    Segunda a sexta, em horário comercial.
+                    {company.businessHours}
                   </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-500/10 text-blue-400 ring-1 ring-blue-400/20">
+                  <Camera size={19} />
+                </div>
+
+                <div>
+                  <p className="font-medium text-white">
+                    Instagram
+                  </p>
+
+                  <a
+                    href={company.instagram}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-1 inline-block text-sm text-slate-400 transition hover:text-white focus:outline-none focus:text-white"
+                  >
+                    {company.instagramLabel}
+                  </a>
                 </div>
               </div>
 
@@ -118,9 +141,12 @@ ${formData.message}
                     E-mail
                   </p>
 
-                  <p className="mt-1 text-sm text-slate-400">
-                    contato@soluticariri.com.br
-                  </p>
+                  <a
+                    href={`mailto:${company.email}`}
+                    className="mt-1 inline-block text-sm text-slate-400 transition hover:text-white focus:outline-none focus:text-white"
+                  >
+                    {company.email}
+                  </a>
                 </div>
               </div>
             </div>
@@ -153,6 +179,7 @@ ${formData.message}
                   name="name"
                   type="text"
                   required
+                  autoComplete="name"
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Seu nome"
@@ -172,6 +199,7 @@ ${formData.message}
                   id="company"
                   name="company"
                   type="text"
+                  autoComplete="organization"
                   value={formData.company}
                   onChange={handleChange}
                   placeholder="Nome da empresa"
@@ -201,7 +229,7 @@ ${formData.message}
 
               <button
                 type="submit"
-                className="flex w-full items-center justify-center gap-3 rounded-xl bg-blue-600 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-blue-500"
+                className="flex w-full items-center justify-center gap-3 rounded-xl bg-blue-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-blue-950/30 transition duration-300 hover:-translate-y-0.5 hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
               >
                 <Send size={18} />
                 Enviar pelo WhatsApp
