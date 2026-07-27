@@ -11,14 +11,34 @@ function Hero() {
   // 2 = terceiro slide
   const [activeSlide, setActiveSlide] = useState(0)
 
+  // Guarda a direção da animação.
+  // "next" = próximo slide
+  // "previous" = slide anterior
+  const [slideDirection, setSlideDirection] = useState('next')
+
+  // =========================================================
+  // CONTROLE DO TOQUE NO CELULAR
+  // =========================================================
+
   // Guardam as posições horizontais do toque no celular.
-  // useRef é utilizado porque não precisamos redesenhar
-  // o componente toda vez que o dedo se move.
   const touchStartX = useRef(null)
   const touchEndX = useRef(null)
 
-  // Distância mínima que o usuário precisa arrastar
-  // para considerarmos o movimento como um swipe.
+  // =========================================================
+  // CONTROLE DO MOUSE NO COMPUTADOR
+  // =========================================================
+
+  // Guarda a posição onde o mouse começou a ser arrastado.
+  const mouseStartX = useRef(null)
+
+  // Guarda a posição atual/final do mouse.
+  const mouseEndX = useRef(null)
+
+  // Indica se o usuário está com o mouse pressionado.
+  const isDragging = useRef(false)
+
+  // Distância mínima necessária para considerar
+  // o movimento como um swipe/arraste.
   const minimumSwipeDistance = 50
 
   // =========================================================
@@ -141,6 +161,9 @@ function Hero() {
   // Avança para o próximo slide.
   // Se estiver no último, volta para o primeiro.
   function nextSlide() {
+    // Define a direção da animação.
+    setSlideDirection('next')
+
     setActiveSlide((current) =>
       current === slides.length - 1 ? 0 : current + 1,
     )
@@ -149,80 +172,166 @@ function Hero() {
   // Volta para o slide anterior.
   // Se estiver no primeiro, vai para o último.
   function previousSlide() {
+    // Define a direção da animação.
+    setSlideDirection('previous')
+
     setActiveSlide((current) =>
       current === 0 ? slides.length - 1 : current - 1,
     )
   }
 
   // =========================================================
+  // FUNÇÃO UTILIZADA PELOS PONTINHOS
+  // =========================================================
+
+  function goToSlide(index) {
+    // Não faz nada se o usuário clicar
+    // no slide que já está aberto.
+    if (index === activeSlide) {
+      return
+    }
+
+    // Descobre a direção da navegação.
+    if (index > activeSlide) {
+      setSlideDirection('next')
+    } else {
+      setSlideDirection('previous')
+    }
+
+    // Exibe o slide escolhido.
+    setActiveSlide(index)
+  }
+
+  // =========================================================
   // FUNÇÕES DO SWIPE NO CELULAR
   // =========================================================
 
-  // Executada quando o usuário toca no card.
   function handleTouchStart(event) {
     // Guarda a posição horizontal inicial do dedo.
     touchStartX.current = event.touches[0].clientX
 
-    // Limpa uma possível posição anterior.
+    // Limpa uma posição anterior.
     touchEndX.current = null
   }
 
-  // Executada enquanto o dedo está deslizando.
   function handleTouchMove(event) {
-    // Guarda a posição horizontal atual/final.
+    // Guarda a posição atual do dedo.
     touchEndX.current = event.touches[0].clientX
   }
 
-  // Executada quando o usuário tira o dedo da tela.
   function handleTouchEnd() {
-    // Se não houver posição inicial ou final,
-    // não existe movimento suficiente para analisar.
+    // Verifica se realmente houve movimento.
     if (
       touchStartX.current === null ||
       touchEndX.current === null
     ) {
+      touchStartX.current = null
+      touchEndX.current = null
       return
     }
 
-    // Calcula a distância percorrida.
+    // Calcula a distância horizontal.
     const distance =
       touchStartX.current - touchEndX.current
 
-    // =====================================================
-    // SWIPE PARA A ESQUERDA
-    // =====================================================
-    //
-    // Exemplo:
-    //
-    // início: 300px
-    // final: 150px
-    //
-    // 300 - 150 = 150
-    //
-    // Portanto, avançamos.
+    // Arrastou para a esquerda:
+    // próximo slide.
     if (distance > minimumSwipeDistance) {
       nextSlide()
     }
 
-    // =====================================================
-    // SWIPE PARA A DIREITA
-    // =====================================================
-    //
-    // Exemplo:
-    //
-    // início: 100px
-    // final: 250px
-    //
-    // 100 - 250 = -150
-    //
-    // Portanto, voltamos.
+    // Arrastou para a direita:
+    // slide anterior.
     if (distance < -minimumSwipeDistance) {
       previousSlide()
     }
 
-    // Limpa as posições depois da operação.
+    // Limpa as posições.
     touchStartX.current = null
     touchEndX.current = null
+  }
+
+  // =========================================================
+  // FUNÇÕES DO ARRASTE COM MOUSE
+  // =========================================================
+
+  function handleMouseDown(event) {
+    // Ignora o arraste caso o clique tenha ocorrido
+    // diretamente sobre um botão.
+    //
+    // Isso evita conflito com os pontinhos do carrossel.
+    if (event.target.closest('button')) {
+      return
+    }
+
+    // Informa que começamos a arrastar.
+    isDragging.current = true
+
+    // Guarda a posição inicial do mouse.
+    mouseStartX.current = event.clientX
+
+    // Limpa qualquer posição anterior.
+    mouseEndX.current = null
+  }
+
+  function handleMouseMove(event) {
+    // Só acompanha o movimento se o botão
+    // do mouse estiver pressionado.
+    if (!isDragging.current) {
+      return
+    }
+
+    // Atualiza a posição horizontal do mouse.
+    mouseEndX.current = event.clientX
+  }
+
+  function finishMouseDrag() {
+    // Caso não exista um arraste válido,
+    // apenas limpa os controles.
+    if (
+      !isDragging.current ||
+      mouseStartX.current === null ||
+      mouseEndX.current === null
+    ) {
+      isDragging.current = false
+      mouseStartX.current = null
+      mouseEndX.current = null
+      return
+    }
+
+    // Calcula a distância horizontal percorrida.
+    const distance =
+      mouseStartX.current - mouseEndX.current
+
+    // Arrastou para a esquerda:
+    // próximo slide.
+    if (distance > minimumSwipeDistance) {
+      nextSlide()
+    }
+
+    // Arrastou para a direita:
+    // slide anterior.
+    if (distance < -minimumSwipeDistance) {
+      previousSlide()
+    }
+
+    // Finaliza o estado do arraste.
+    isDragging.current = false
+    mouseStartX.current = null
+    mouseEndX.current = null
+  }
+
+  function handleMouseUp() {
+    finishMouseDrag()
+  }
+
+  function handleMouseLeave() {
+    // Se o usuário sair do card enquanto
+    // estiver segurando o mouse, finalizamos
+    // o movimento normalmente.
+    if (isDragging.current) {
+      finishMouseDrag()
+    }
   }
 
   return (
@@ -233,6 +342,7 @@ function Hero() {
       {/* =====================================================
           FUNDO DO HERO
       ====================================================== */}
+
       <div className="absolute inset-0 -z-10">
         <div className="absolute left-1/2 top-0 h-96 w-96 -translate-x-1/2 rounded-full bg-blue-600/20 blur-3xl" />
       </div>
@@ -241,6 +351,7 @@ function Hero() {
         {/* ===================================================
             LADO ESQUERDO
         ==================================================== */}
+
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-blue-400">
             SoluTI Cariri
@@ -260,6 +371,7 @@ function Hero() {
           </p>
 
           {/* Botões */}
+
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">
             <a
               href="#contato"
@@ -277,6 +389,7 @@ function Hero() {
           </div>
 
           {/* Diferenciais rápidos */}
+
           <div className="mt-10 flex flex-col gap-3 text-sm text-slate-400 sm:flex-row sm:gap-6">
             <span>✓ Atendimento rápido na região</span>
 
@@ -291,28 +404,55 @@ function Hero() {
         {/* ===================================================
             LADO DIREITO
         ==================================================== */}
+
         <div className="relative mx-auto w-full max-w-lg">
           {/* Brilho ao redor do card */}
+
           <div className="absolute inset-0 rounded-3xl bg-blue-500/10 blur-3xl" />
 
           {/* =================================================
               CARD / CARROSSEL
 
               touch-pan-y:
-              mantém a rolagem vertical normal da página no
-              celular, mesmo com o swipe horizontal funcionando.
+              mantém a rolagem vertical da página funcionando
+              normalmente no celular.
+
+              cursor-grab:
+              mostra no computador que o card pode ser arrastado.
+
+              active:cursor-grabbing:
+              muda o cursor quando o mouse está pressionado.
+
+              select-none:
+              evita selecionar os textos enquanto arrasta.
           ================================================== */}
+
           <div
-            className="relative touch-pan-y overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur-xl"
+            className="relative touch-pan-y cursor-grab select-none overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur-xl active:cursor-grabbing"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseLeave}
           >
             {/* ===============================================
                 CABEÇALHO
             ================================================ */}
+
             <div className="flex items-center justify-between gap-4 border-b border-white/10 pb-5">
-              <div>
+              {/* Este bloco é recriado quando muda o slide,
+                  permitindo executar a animação novamente. */}
+
+              <div
+                key={`header-${activeSlide}`}
+                className={
+                  slideDirection === 'next'
+                    ? 'animate-slide-from-right'
+                    : 'animate-slide-from-left'
+                }
+              >
                 <p className="text-xs uppercase tracking-[0.25em] text-blue-400">
                   {currentSlide.eyebrow}
                 </p>
@@ -325,6 +465,7 @@ function Hero() {
               {/* =============================================
                   INDICADORES / PONTINHOS
               ============================================== */}
+
               <div
                 className="flex shrink-0 gap-2"
                 aria-label="Selecionar conteúdo"
@@ -333,7 +474,7 @@ function Hero() {
                   <button
                     key={slide.title}
                     type="button"
-                    onClick={() => setActiveSlide(index)}
+                    onClick={() => goToSlide(index)}
                     aria-label={`Mostrar conteúdo ${index + 1}`}
                     aria-current={
                       activeSlide === index
@@ -351,37 +492,53 @@ function Hero() {
             </div>
 
             {/* ===============================================
-                CARDS DO SLIDE
+                CONTEÚDO ANIMADO DO SLIDE
             ================================================ */}
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              {currentSlide.items.map((item) => (
-                <div
-                  key={item.title}
-                  className="rounded-xl border border-white/10 bg-white/5 p-4 transition duration-300 hover:border-blue-400/20 hover:bg-white/[0.07]"
-                >
-                  <p className="font-semibold text-white">
-                    {item.title}
-                  </p>
 
-                  <p className="mt-1 text-sm leading-6 text-slate-400">
-                    {item.description}
-                  </p>
-                </div>
-              ))}
-            </div>
+            <div
+              key={`content-${activeSlide}`}
+              className={
+                slideDirection === 'next'
+                  ? 'animate-slide-from-right'
+                  : 'animate-slide-from-left'
+              }
+            >
+              {/* =============================================
+                  CARDS DO SLIDE
+              ============================================== */}
 
-            {/* ===============================================
-                FRASE INFERIOR
-            ================================================ */}
-            <div className="mt-4 rounded-2xl border border-blue-400/20 bg-blue-500/10 p-5">
-              <p className="text-sm font-medium text-blue-200">
-                {currentSlide.footer}
-              </p>
+              <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                {currentSlide.items.map((item) => (
+                  <div
+                    key={item.title}
+                    className="rounded-xl border border-white/10 bg-white/5 p-4 transition duration-300 hover:border-blue-400/20 hover:bg-white/[0.07]"
+                  >
+                    <p className="font-semibold text-white">
+                      {item.title}
+                    </p>
+
+                    <p className="mt-1 text-sm leading-6 text-slate-400">
+                      {item.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* =============================================
+                  FRASE INFERIOR
+              ============================================== */}
+
+              <div className="mt-4 rounded-2xl border border-blue-400/20 bg-blue-500/10 p-5">
+                <p className="text-sm font-medium text-blue-200">
+                  {currentSlide.footer}
+                </p>
+              </div>
             </div>
 
             {/* ===============================================
                 DICA PARA CELULAR
             ================================================ */}
+
             <p className="mt-4 text-center text-xs text-slate-600 sm:hidden">
               Deslize para os lados para ver mais
             </p>
